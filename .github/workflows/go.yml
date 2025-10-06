@@ -14,9 +14,11 @@ jobs:
     steps:
       - name: Check
         uses: actions/checkout@v5.0.0
-
-      - name: Set up go
+      - name: envi
         uses: actions/setup-go@v6.0.0
+
+      - name: depend
+        run: go mod tidy
 
       - name: Run tests
         run: go test ./...
