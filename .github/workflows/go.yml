@@ -12,13 +12,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check
+      - name: Checkout repository
         uses: actions/checkout@v5.0.0
-      - name: envi
-        uses: actions/setup-go@v6.0.0
 
-      - name: depend
-        run: go mod tidy
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Run tests
-        run: go test ./...
+        run: npm test
